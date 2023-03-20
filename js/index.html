@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@200;300;400&family=Old+Standard+TT&family=Press+Start+2P&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="/css/style.css"/>
+  <title>Tetris Game</title>
+</head>
+<body>
+  <div class="grid">
+    <div class="left-col">
+      <div>
+        <h1>Tetris</h1>
+        <p>Score: <span id="score">0</span></p>
+        <p>Lines: <span id="lines">0</span></p>
+        <p>Levels: <span id="levels">0</span></p>
+        <canvas id="next" class="next"></canvas>
+      </div>
+      <button onClick="play()" class="play-btn">Start</button>
+    </div>
+    <canvas class="game-board" id="board" width="300" height="600"></canvas>
+  </div>
+  <script src="/js/constants.js"></script>
+  <script src="/js/board.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/piece.js"></script>
+</body>
+</html>
