@@ -1,20 +1,21 @@
 *{
   font-family: "Press Start 2P", cursive;
 }
+body{
+  background-image: url(/t01.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
 .grid{
   display: grid;
-  grid-template-columns: 320px 200px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.left-col{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 .game-board{
   border:2px solid #39B5E0;
 }
-.play-btn{
+.play-button{
   background-color: #9bc564;
   color: #ee3346;
   font-size: 16px;
@@ -23,4 +24,5 @@
   text-align: center;
   cursor: pointer;
   border: none;
+  margin-bottom: 10px;
 }

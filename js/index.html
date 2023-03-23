@@ -9,18 +9,25 @@
   <title>Tetris Game</title>
 </head>
 <body>
-  <div class="grid">
-    <div class="left-col">
-      <div>
-        <h1>Tetris</h1>
-        <p>Score: <span id="score">0</span></p>
-        <p>Lines: <span id="lines">0</span></p>
-        <p>Levels: <span id="levels">0</span></p>
-        <canvas id="next" class="next"></canvas>
+  <div class="bg">
+    <div class="grid">
+      <div class="left-column">
+          <h2>HIGH SCORES</h2>
+          <ol id="highScores"></ol>
+        </div>
+        <canvas id="board" class="game-board"></canvas>
+        <div class="right-column">
+        <div>
+          <h1>TETRIS</h1>
+          <p>Score: <span id="score">0</span></p>
+          <p>Lines: <span id="lines">0</span></p>
+          <p>Level: <span id="level">0</span></p>
+          <canvas id="next" class="next"></canvas>
+        </div>
+        <button onClick="play()" class="play-button">Start</button>
+        <button onClick="pause()" class="play-button">Pause</button>
       </div>
-      <button onClick="play()" class="play-btn">Start</button>
     </div>
-    <canvas class="game-board" id="board" width="300" height="600"></canvas>
   </div>
   <script src="/js/constants.js"></script>
   <script src="/js/board.js"></script>

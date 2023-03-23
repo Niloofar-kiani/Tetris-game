@@ -1,9 +1,11 @@
 class Board {
-  constructor(ctx){
+  constructor(ctx, nextCtx){
     this.ctx = ctx;
+    this.nextCtx = nextCtx;
 
     this.grid = this.getEmptyGrid();
-    this.piece = new Piece(ctx);
+    this.setNextPiece();
+    this.setCurrentPiece();
   }
  getEmptyGrid() {
   return Array.from({length: ROWS}, () => Array(COLS).fill(0));
@@ -42,16 +44,20 @@ class Board {
   const moveFn = MOVES[keyCode];
   if(moveFn){
     let newPosition = moveFn(this.piece);
-
+//hard drop
     if(keyCode === KEYS.SPACE){
       while(this.isValid(newPosition)){
         this.piece.move(newPosition);
+        stat.score += POINTS.HARD_DROP;
         newPosition = moveFn(this.piece);
       }
     }
-
+//soft drop
     if(this.isValid(newPosition)){
       this.piece.move(newPosition);
+      if(keyCode === KEYS.DOWN) {
+        stat.score += POINTS.SOFT_DROP;
+      }
     }
 
     //redraw
@@ -79,17 +85,48 @@ class Board {
     if(this.piece.y === 0){
       return false;
     }
-    this.piece = new Piece(this.ctx);
+    this.setCurrentPiece();
   }
   return true;
  }
 
  clearLines() {
+  let lines = 0;
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){
+      lines++;
       this.grid.splice(y, 1);
       this.grid.unshift( Array(COLS).fill(0))
     }
   });
+  if(lines > 0) {
+    stat.score += this.getLineClearPoints(lines);
+    stat.lines += lines;
+
+    if(stat.lines >= LINES_PER_LEVEL){
+      stat.level++;
+      stat.lines -= LINES_PER_LEVEL;
+      time.level = LEVEL[stat.level];
+    }
+  }
  }
+
+setNextPiece() {
+  const {width, height} = this.nextCtx.canvas;
+  this.nextPiece = new Piece(this.nextCtx);
+  this.nextCtx.clearRect(0, 0, width, height);
+  this.nextPiece.draw();
+} 
+
+setCurrentPiece() {
+  this.piece = this.nextPiece;
+  this.piece.ctx = this.ctx;
+  this.piece.x = 3;
+  this.setNextPiece();
+}
+
+getLineClearPoints(lines) {
+  const lineClearPoints = LINE_TO_POINTS[lines] ?? 0;
+  return (stat.level + 1) * lineClearPoints;
+}
 }

@@ -40,7 +40,42 @@ const SHAPES = [
     [0, 7, 7],
     [0, 0, 0],
   ],
-]
+];
+
+const POINTS = {
+  SOFT_DROP: 1,
+  HARD_DROP: 2,
+};
+Object.freeze(POINTS);
+
+const LINE_TO_POINTS = {
+  1: 100,
+  2: 300,
+  3: 500,
+  4: 800,
+};
+Object.freeze(LINE_TO_POINTS);
+
+const LINES_PER_LEVEL = 1;
+const LEVEL = {
+  0: 800,
+  1: 720,
+  2: 630,
+  3: 550,
+  4: 470,
+  5: 380,
+  6: 300,
+  7: 220,
+  8: 130,
+  9: 100,
+  10: 80,
+};
+Object.freeze(LEVEL);
+
+
+const NO_OF_HIGH_SCORES = 10;
+const HIGH_SCORES = "highScores";
+
 
 const KEYS = {
   LEFT: 37,
