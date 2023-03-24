@@ -10,8 +10,8 @@ canvas.style.top = "50%";
 canvas.style.transform = "translate(-50%,-50%)";
 canvas.style.position = "absolute";
 
-nextCanvas.width = 4 * BLOCK_SIZE;
-nextCanvas.height = 4 * BLOCK_SIZE;
+nextCanvas.width = 6 * BLOCK_SIZE;
+nextCanvas.height = 6 * BLOCK_SIZE;
 
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 nextCtx.scale(BLOCK_SIZE, BLOCK_SIZE);
@@ -141,11 +141,13 @@ function showHighScores() {
     .join("");
 }
 
-// function pauseGame() {
-//   cancelAnimationFrame(requestId);
-// }
+function pause() {
+  if (requestId) {
+    cancelAnimationFrame(requestId);
+  }
+}
 
-// function resumeGame() {
-//   cancelAnimationFrame(requestId);
-// }
+function resume() {
+  animate();
+}
 
