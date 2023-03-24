@@ -8,29 +8,44 @@
   <link rel="stylesheet" href="/css/style.css"/>
   <title>Tetris Game</title>
 </head>
-<body>
+<body onload="onTetrisLoad()">
+  <!-- <canvas id="cnv"></canvas> -->
+  <div class="full">
   <div class="bg">
     <!-- <div class="monitor"><img src="../monitor.png" alt=""></div> -->
-    <div class="grid">
+    <div class="main">
       <div class="left-column">
-          <h2>HIGH SCORES</h2>
-          <ol id="highScores"></ol>
+        <h1>TETRIS</h1>
+        <div class="next-move">
+          <canvas id="next" class="next"></canvas>
         </div>
+        <button onClick="pause()" class="pause-button">Pause</button>
+      </div>
+      <div class="game-canvas">
         <canvas id="board" class="game-board"></canvas>
-        <div class="right-column">
-        <div>
-          <h1>TETRIS</h1>
+        <div class="btns">
+          <button onClick="play()" class="play-button">Start</button>
+        </div>
+      </div>
+      
+        
+      </canvas>
+      <div class="right-column">
+          
+          <div class="scores">
           <p>Score: <span id="score">0</span></p>
           <p>Lines: <span id="lines">0</span></p>
           <p>Level: <span id="level">0</span></p>
-          <canvas id="next" class="next"></canvas>
-        </div>
-        <button onClick="play()" class="play-button">Start</button>
-        <button onClick="pause()" class="play-button">Pause</button>
-        <button onClick="resume()" class="play-button">Resume</button>
+          </div>
+          <br>
+          <h2>HIGH SCORES</h2>
+          <ol id="highScores"></ol>
+          
+      </div>
+       
       </div>
     </div>
-  </div>
+</div>
   <script src="/js/constants.js"></script>
   <script src="/js/board.js"></script>
   <script src="/js/main.js"></script>
