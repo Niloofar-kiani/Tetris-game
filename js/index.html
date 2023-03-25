@@ -15,16 +15,22 @@
     <!-- <div class="monitor"><img src="../monitor.png" alt=""></div> -->
     <div class="main">
       <div class="left-column">
-        <h1>TETRIS</h1>
-        <div class="next-move">
-          <canvas id="next" class="next"></canvas>
+        <div class="header-wrap">
+          <h1>TETRIS</h1>
         </div>
-        <button onClick="pause()" class="pause-button">Pause</button>
+        <div class="header-next">
+          <div class="next-move">
+            <canvas id="next" class="next"></canvas>
+          </div>
+          <button onClick="pause()" class="btn pause-button">Pause</button>
+          <button onClick="playIntro()" class="btn sound-button"><img src="../sound-btn.png"></button>
+        </div>
+        
       </div>
       <div class="game-canvas">
         <canvas id="board" class="game-board"></canvas>
         <div class="btns">
-          <button onClick="play()" class="play-button">Start</button>
+          <button onClick="play()" class="btn play-button">Start</button>
         </div>
       </div>
       
@@ -37,8 +43,8 @@
           <p>Lines: <span id="lines">0</span></p>
           <p>Level: <span id="level">0</span></p>
           </div>
-          <br>
-          <h2>HIGH SCORES</h2>
+   
+          <h4>HIGH SCORES:</h2>
           <ol id="highScores"></ol>
           
       </div>

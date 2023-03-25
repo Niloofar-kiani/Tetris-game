@@ -14,10 +14,11 @@ class Board {
   //for having diffrent shapes
  this.grid.forEach((row, y) => {
     row.forEach ((value, x) => {
-     if(value > 0){
-      this.ctx.fillStyle = COLORS[value -1];
-      this.ctx.fillRect(x, y, 1, 1);
-     }
+      if(value > 0){
+        this.ctx.fillStyle = COLORS[value -1];
+        this.ctx.fillRect(x, y, 1, 1);
+        this.ctx.strokeRect(x, y, 1, 1);
+      }
      })
     })
   this.piece.draw();
@@ -74,6 +75,7 @@ class Board {
      }
      })
     })
+
  }
  drop() {
   let newPosition = MOVES[KEYS.DOWN](this.piece);
@@ -90,13 +92,17 @@ class Board {
   return true;
  }
 
+ 
+
  clearLines() {
+  this.clear = new Audio('../clear.wav');
   let lines = 0;
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){
       lines++;
       this.grid.splice(y, 1);
-      this.grid.unshift( Array(COLS).fill(0))
+      this.grid.unshift( Array(COLS).fill(0));
+      this.clear.play();
     }
   });
   if(lines > 0) {

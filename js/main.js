@@ -41,10 +41,21 @@ let stat = new Proxy(statValues, {
     return true;
   },
 });
+var intro = new Audio('../Tetris_start.mp3');
+var gameoverSound = new Audio('../gameover.wav');
+var clickSound = new Audio('../click.wav');
 
 function onTetrisLoad(){
   showHighScores();
-  
+ 
+}
+
+function playIntro(){
+  if (!intro.paused) {
+    intro.pause();
+  }else{
+    intro.play();
+  }
 }
 
 function handleKeyEvent(event) {
@@ -74,6 +85,8 @@ function play() {
   showPause();
   resetGame();
   addEventListener();
+  intro.pause();
+  clickSound.play();
 
   if (requestId) {
     cancelAnimationFrame(requestId);
@@ -127,14 +140,15 @@ function animate(now = 0) {
 
 function gameOver() {
   cancelAnimationFrame(requestId);
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "#090037";
   ctx.fillRect(1, 3, 8, 1.2);
   ctx.font = "1px Arial";
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "#ee203f";
   ctx.fillText("GAME OVER", 1.8, 4);
   checkHighScore(stat.score);
   showPlay();
   hidePause();
+  gameoverSound.play();
 }
 
 function checkHighScore(score) {
@@ -172,13 +186,16 @@ function showHighScores() {
 
 function pause() {
   var el=document.querySelector(".pause-button");
+  clickSound.play();
   if(el.textContent === "Pause"){
       el.textContent = "Resume";
+      el.classList.add("resume-button");
       if (requestId) {
         cancelAnimationFrame(requestId);
       }
   }else{
     el.textContent = "Pause";
+    el.classList.remove("resume-button");
     animate();
   }
 }
