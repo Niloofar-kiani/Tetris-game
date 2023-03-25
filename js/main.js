@@ -5,16 +5,9 @@ const nextCtx = nextCanvas.getContext("2d");
 
 canvas.width = COLS * BLOCK_SIZE;
 canvas.height = ROWS * BLOCK_SIZE;
-// canvas.style.left = "50%";
-// canvas.style.top = "50%";
-// canvas.style.transform = "translate(-50%,-50%)";
-// canvas.style.position = "absolute";
 
 nextCanvas.width = 6 * BLOCK_SIZE;
 nextCanvas.height = 6 * BLOCK_SIZE;
-// nextCanvas.style.left = "50%";
-// nextCanvas.style.top = "50%";
-// nextCanvas.style.transform = "translate(-50%,-50%)";
 
 ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
 nextCtx.scale(BLOCK_SIZE, BLOCK_SIZE);
@@ -41,19 +34,18 @@ let stat = new Proxy(statValues, {
     return true;
   },
 });
-var intro = new Audio('../Tetris_start.mp3');
-var gameoverSound = new Audio('../gameover.wav');
-var clickSound = new Audio('../click.wav');
+var intro = new Audio("../Tetris_start.mp3");
+var gameoverSound = new Audio("../gameover.wav");
+var clickSound = new Audio("../click.wav");
 
-function onTetrisLoad(){
+function onTetrisLoad() {
   showHighScores();
- 
 }
 
-function playIntro(){
+function playIntro() {
   if (!intro.paused) {
     intro.pause();
-  }else{
+  } else {
     intro.play();
   }
 }
@@ -104,22 +96,21 @@ function draw() {
 let requestId = null;
 let time;
 
-function hidePlay(){
+function hidePlay() {
   document.querySelector(".play-button").classList.add("hideBtn");
 }
 
-function showPlay(){
+function showPlay() {
   document.querySelector(".play-button").classList.remove("hideBtn");
 }
 
-function hidePause(){
+function hidePause() {
   document.querySelector(".pause-button").classList.remove("pbtn-vis");
 }
 
-function showPause(){
+function showPause() {
   document.querySelector(".pause-button").classList.add("pbtn-vis");
 }
-
 
 function animate(now = 0) {
   time.elapsed = now - time.start;
@@ -156,7 +147,7 @@ function checkHighScore(score) {
   const lowestScore = highScores
     ? highScores[NO_OF_HIGH_SCORES - 1]?.score ?? 0
     : [];
-  console.log(highScores)
+  console.log(highScores);
   if (score > lowestScore) {
     saveHighScore(score, highScores);
     showHighScores();
@@ -185,50 +176,17 @@ function showHighScores() {
 }
 
 function pause() {
-  var el=document.querySelector(".pause-button");
+  var el = document.querySelector(".pause-button");
   clickSound.play();
-  if(el.textContent === "Pause"){
-      el.textContent = "Resume";
-      el.classList.add("resume-button");
-      if (requestId) {
-        cancelAnimationFrame(requestId);
-      }
-  }else{
+  if (el.textContent === "Pause") {
+    el.textContent = "Resume";
+    el.classList.add("resume-button");
+    if (requestId) {
+      cancelAnimationFrame(requestId);
+    }
+  } else {
     el.textContent = "Pause";
     el.classList.remove("resume-button");
     animate();
   }
 }
-
-//Get context and screen size;
-// var ctx1 = cnv.getContext("2d");
-// var W = window.innerWidth;
-// var H = window.innerHeight;
-
-// //Set Canvas and Background Color;
-// cnv.width = W;
-// cnv.height = H;
-// ctx1.fillStyle = "#112";
-// ctx1.fillRect(0, 0, W, H);
-
-// //Glow effect;
-// ctx1.shadowBlur = 10;
-// ctx1.shadowColor = "white";
-
-// function animate() {
-//   //Random position and size of stars;
-//   let x = W * Math.random();
-//   let y = H * Math.random();
-//   let r = 2.5 * Math.random();
-
-//   //Draw the stars;
-//   ctx1.beginPath();
-//   ctx1.fillStyle = "white";
-//   ctx1.arc(x, y, r, 0, Math.PI * 2);
-//   ctx1.fill();
-
-//   //Using setTimeout instead of window.requestAnimationFrame for slower speed... window.requestAnimationFrame is approximately equal to setTimeout(func, 17);
-//   setTimeout(animate, 100);
-// }
-// animate();
-

@@ -65,11 +65,7 @@ body{
     --scores-height:-;
     --scores-font-s:12px;
     --h4-margin-top:20px;
-    //--lc-flex-dir:row;
   }
-  // @media screen and (min-width: 787px) {
-    
-  // }
 
   .full{
     display: flex;
@@ -116,40 +112,6 @@ body{
                            15px 0 0 0 black,
                            0 -15px 0 0 black,
                            0 15px 0 0 black;
-            &::before {
-              content: "";
-              width: 104%;
-              height: 102%;
-              border-radius: 8px;
-              background-image: linear-gradient(
-                var(--rotate)
-                , #5ddcff, #3c67e3 43%, #4e00c2);
-                position: absolute;
-                z-index: -1;
-                top: -1%;
-                left: -2%;
-                animation: spin 2.5s linear infinite;
-            }
-            &::after {
-              position: absolute;
-              content: "";
-              top: calc(var(--card-height) / 6);
-              left: 0;
-              right: 0;
-              z-index: -1;
-              height: 100%;
-              width: 100%;
-              margin: 0 auto;
-              transform: scale(0.8);
-              filter: blur(calc(var(--card-height) / 6));
-              background-image: linear-gradient(
-                var(--rotate)
-                , #5ddcff, #3c67e3 43%, #4e00c2);
-                opacity: 1;
-              transition: opacity .5s;
-              animation: spin 2.5s linear infinite;
-            }
-            
           }
           .btns{
             position: absolute;
@@ -183,9 +145,6 @@ body{
           }
         }
         .pause-button{
-          // position: var(--pause-btn-pos);
-          // top:var(--pause-btn-top);
-          // z-index: var(--pause-btn-z);
           margin-top: var(--pause-btn-mt);
           display: flex;
           align-items: center;
@@ -303,20 +262,7 @@ body{
             transition: text-shadow .3s ease .3s, 
               transform .3s ease .3s,
               letter-spacing .3s ease .3s;
-          
-            // &:hover {
-            //   transition: text-shadow .33s ease, 
-            //     transform .3s ease,
-            //     letter-spacing .3s ease;
-            //   text-shadow: 0 0 0 #004134,
-            //     0 1px 0 #00483B,
-            //     0 2px 0 #003528,
-            //     0 3px 3px rgba(0, 0, 0, 0.9);
-            //   transform: translate(0px, 15px) 
-            //     perspective(200px) 
-            //     rotateX(10deg);
-            //   letter-spacing: .125em;
-            // }
+        
             h1{
               margin-top:var(--margin-top-el);
              }
