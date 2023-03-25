@@ -34,9 +34,9 @@ let stat = new Proxy(statValues, {
     return true;
   },
 });
-var intro = new Audio("../Tetris_start.mp3");
-var gameoverSound = new Audio("../gameover.wav");
-var clickSound = new Audio("../click.wav");
+var intro = new Audio("../../assets/sounds/Tetris_start.mp3");
+var gameoverSound = new Audio("../../assets/sounds/gameover.wav");
+var clickSound = new Audio("../../assets/sounds/click.wav");
 
 function onTetrisLoad() {
   showHighScores();
@@ -147,7 +147,6 @@ function checkHighScore(score) {
   const lowestScore = highScores
     ? highScores[NO_OF_HIGH_SCORES - 1]?.score ?? 0
     : [];
-  console.log(highScores);
   if (score > lowestScore) {
     saveHighScore(score, highScores);
     showHighScores();

@@ -9,8 +9,8 @@
   --rotate: 132deg;
   --margin-top-el:30px;
   --boxes-background:rgba(9, 0, 55, 0.85);
-  --display-mnonitor:url("../monitor2.png");
-  --display-bg: url("../bg.gif");
+  --display-monitor:url("../assets/imgs/monitor.png");
+  --display-bg: url("../assets/imgs/bg.gif");
   --bg-margin-left: 111px;
   --bg-margin-top: 85px;
   --full-height:916px;
@@ -40,7 +40,7 @@ body {
 }
 @media (max-width: 1190px) {
   body {
-    --display-mnonitor:url("../bg.gif");
+    --display-monitor:url("../assets/imgs/bg.gif");
     --display-bg: none;
     --bg-margin-left: auto;
     --full-height:-;
@@ -74,7 +74,7 @@ body .full {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-image: var(--display-mnonitor);
+  background-image: var(--display-monitor);
   background-size: cover;
   background-repeat: no-repeat;
   height: var(--full-height);
@@ -96,8 +96,6 @@ body .full .bg {
 }
 body .full .bg .main {
   padding: 20px;
-  /* display: grid;
-  grid-template-columns: 2fr 3fr 1fr; */
   display: flex;
   flex-direction: var(--main-flex-dir);
   justify-content: space-between;
@@ -115,35 +113,6 @@ body .full .bg .main .game-canvas .game-board {
   border: 5px solid #e7f4f8;
   outline: 5px solid rgb(71, 142, 236);
   box-shadow: -15px 0 0 0 black, 15px 0 0 0 black, 0 -15px 0 0 black, 0 15px 0 0 black;
-}
-body .full .bg .main .game-canvas .game-board::before {
-  content: "";
-  width: 104%;
-  height: 102%;
-  border-radius: 8px;
-  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-  position: absolute;
-  z-index: -1;
-  top: -1%;
-  left: -2%;
-  animation: spin 2.5s linear infinite;
-}
-body .full .bg .main .game-canvas .game-board::after {
-  position: absolute;
-  content: "";
-  top: calc(var(--card-height) / 6);
-  left: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
-  filter: blur(calc(var(--card-height) / 6));
-  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-  opacity: 1;
-  transition: opacity 0.5s;
-  animation: spin 2.5s linear infinite;
 }
 body .full .bg .main .game-canvas .btns {
   position: absolute;

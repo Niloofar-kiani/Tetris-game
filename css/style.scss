@@ -9,8 +9,8 @@
   --rotate: 132deg;
   --margin-top-el:30px;
   --boxes-background:rgba(9, 0, 55, 0.85);
-  --display-mnonitor:url("../monitor2.png");
-  --display-bg: url("../bg.gif");
+  --display-monitor:url("../assets/imgs/monitor.png");
+  --display-bg: url("../assets/imgs/bg.gif");
   --bg-margin-left: 111px;
   --bg-margin-top: 85px;
   --full-height:916px;
@@ -39,7 +39,7 @@ body{
   background-color:  rgb(32, 31, 31);
 
   @media (max-width: 1190px) {
-    --display-mnonitor:url("../bg.gif");
+    --display-monitor:url("../assets/imgs/bg.gif");
     --display-bg: none;
     --bg-margin-left: auto;
     --full-height:-;
@@ -71,7 +71,7 @@ body{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    background-image:var(--display-mnonitor) ;
+    background-image:var(--display-monitor) ;
     background-size: cover;
     background-repeat: no-repeat;
     height: var(--full-height);
@@ -91,8 +91,6 @@ body{
       border-radius: 18px;
       .main{
         padding: 20px;
-        /* display: grid;
-        grid-template-columns: 2fr 3fr 1fr; */
         display: flex;
         flex-direction: var(--main-flex-dir);
         justify-content: space-between;
