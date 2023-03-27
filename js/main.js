@@ -37,6 +37,7 @@ let stat = new Proxy(statValues, {
 var intro = new Audio("../../assets/sounds/Tetris_start.mp3");
 var gameoverSound = new Audio("../../assets/sounds/gameover.wav");
 var clickSound = new Audio("../../assets/sounds/click.wav");
+intro.loop = true;
 
 function onTetrisLoad() {
   showHighScores();
@@ -77,7 +78,6 @@ function play() {
   showPause();
   resetGame();
   addEventListener();
-  intro.pause();
   clickSound.play();
 
   if (requestId) {

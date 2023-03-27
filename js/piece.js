@@ -61,13 +61,4 @@ class Piece{
   randomizeTetrominos(nbTypes){
     return Math.floor(Math.random()* nbTypes);
   }
-
-  darkenColor(rgbaString, factor) {
-    const rgbaMatch = rgbaString.match(/rgba\((\d+), (\d+), (\d+), (\d+(?:\.\d+)?)\)/);
-    if (!rgbaMatch) return null;
-    
-    const [, r, g, b, a] = rgbaMatch.map(parseFloat);
-    const darkenFactor = factor || 0.2; // Default to 0.2 if factor is not provided
-    return `rgba(${r * darkenFactor}, ${g * darkenFactor}, ${b * darkenFactor}, ${a})`;
   }
-}
