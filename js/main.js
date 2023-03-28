@@ -75,7 +75,7 @@ function resetGame() {
 
 function play() {
   hidePlay();
-  showPause();
+  showBtn();
   resetGame();
   addEventListener();
   clickSound.play();
@@ -104,12 +104,14 @@ function showPlay() {
   document.querySelector(".play-button").classList.remove("hideBtn");
 }
 
-function hidePause() {
+function hideBtn() {
   document.querySelector(".pause-button").classList.remove("pbtn-vis");
+  document.querySelector(".reset-button").classList.remove("rbtn-vis");
 }
 
-function showPause() {
+function showBtn() {
   document.querySelector(".pause-button").classList.add("pbtn-vis");
+  document.querySelector(".reset-button").classList.add("rbtn-vis");
 }
 
 function animate(now = 0) {
@@ -138,7 +140,7 @@ function gameOver() {
   ctx.fillText("GAME OVER", 1.8, 4);
   checkHighScore(stat.score);
   showPlay();
-  hidePause();
+  hideBtn();
   gameoverSound.play();
 }
 

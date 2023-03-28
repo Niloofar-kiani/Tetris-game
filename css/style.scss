@@ -177,6 +177,24 @@ body{
         .pbtn-hidden{
           visibility: hidden !important;
         }
+        .reset-button{
+          text-align: center;
+          cursor: pointer;
+          border: none;
+          margin-bottom: 10px;
+          visibility: hidden;
+          font-size: 16px;
+          padding: 15px 15px;
+          width: 150px;
+          background: #e6083c;
+          box-shadow: 1px 4px 1px 1px #530055, 0px 6px 1px 2px rgba(10, 10, 10, 0.5);    
+        }
+        .rbtn-vis{
+          visibility: visible;
+        }
+        .rbtn-hidden{
+          visibility: hidden !important;
+        }
         .play-button{
           display: flex;
           align-items: center;
