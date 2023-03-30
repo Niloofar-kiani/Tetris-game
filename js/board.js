@@ -7,9 +7,10 @@ class Board {
     this.setNextPiece();
     this.setCurrentPiece();
   }
+
  getEmptyGrid() {
   return Array.from({length: ROWS}, () => Array(COLS).fill(0));
- }
+}
  draw() {
   //for having diffrent shapes
  this.grid.forEach((row, y) => {
@@ -18,6 +19,11 @@ class Board {
         this.ctx.fillStyle = COLORS[value -1];
         this.ctx.fillRect(x, y, 1, 1);
         this.ctx.strokeRect(x, y, 1, 1);
+        this.ctx.fillStyle = 'white';
+        this.ctx.font = "0.5px Arial";
+        this.ctx.textAlign = "center";
+        this.ctx.textBaseline = "middle";
+        this.ctx.fillText(value, x + 0.5, y + 0.5);
       }
      })
     })
@@ -72,6 +78,7 @@ class Board {
      row.forEach ((value, x) => {
      if(value > 0){
       this.grid[y + this.piece.y][x + this.piece.x] = value;
+      
      }
      })
     })
@@ -92,17 +99,20 @@ class Board {
   return true;
  }
 
- 
+
 
  clearLines() {
   this.clear = new Audio('../../assets/sounds/clear.wav');
   let lines = 0;
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){
-      lines++;
-      this.grid.splice(y, 1);
-      this.grid.unshift( Array(COLS).fill(0));
-      this.clear.play();
+      lines++;      
+      row.fill(8);
+      setTimeout(() => { 
+        this.grid.splice(y, 1);
+        this.grid.unshift(Array(COLS).fill(0));
+        this.clear.play();
+      }, 1500);
     }
   });
   if(lines > 0) {
