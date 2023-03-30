@@ -79,6 +79,20 @@ function play() {
   resetGame();
   addEventListener();
   clickSound.play();
+  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+function play() {
+  hidePlay();
+  showBtn();
+  resetGame();
+  addEventListener();
+  clickSound.play();
+  if (requestId) {
+    cancelAnimationFrame(requestId);
+  }
+  time.start = performance.now();
+  animate();
+  }</code></pre>`;
+  Prism.highlightAll();
 
   if (requestId) {
     cancelAnimationFrame(requestId);
@@ -107,11 +121,15 @@ function showPlay() {
 function hideBtn() {
   document.querySelector(".pause-button").classList.remove("pbtn-vis");
   document.querySelector(".reset-button").classList.remove("rbtn-vis");
+  document.querySelector(".hs").classList.add("hs-show");
+  document.querySelector(".game-over").classList.add("hs-show");
 }
 
 function showBtn() {
   document.querySelector(".pause-button").classList.add("pbtn-vis");
   document.querySelector(".reset-button").classList.add("rbtn-vis");
+  document.querySelector(".hs").classList.remove("hs-show");
+  document.querySelector(".game-over").classList.remove("hs-show");
 }
 
 function animate(now = 0) {
@@ -133,15 +151,19 @@ function animate(now = 0) {
 
 function gameOver() {
   cancelAnimationFrame(requestId);
-  ctx.fillStyle = "#090037";
-  ctx.fillRect(1, 3, 8, 1.2);
-  ctx.font = "1px Arial";
-  ctx.fillStyle = "#ee203f";
-  ctx.fillText("GAME OVER", 1.8, 4);
   checkHighScore(stat.score);
   showPlay();
   hideBtn();
   gameoverSound.play();
+  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+function gameOver() {
+  cancelAnimationFrame(requestId);
+  checkHighScore(stat.score);
+  showPlay();
+  hideBtn();
+  gameoverSound.play();
+}</code></pre>`;
+  Prism.highlightAll();
 }
 
 function checkHighScore(score) {
@@ -190,4 +212,20 @@ function pause() {
     el.classList.remove("resume-button");
     animate();
   }
+  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+function pause() {
+clickSound.play();
+if(el.textContent === "Pause") {
+  el.textContent = "Resume";
+  el.classList.add("resume");
+  if (requestId) {
+    cancelAnimationFrame(requestId);
+  }
+}else {
+  el.textContent = "Pause";
+  el.classList.remove("resume");
+  animate();
+}
+}</code></pre>`;
+  Prism.highlightAll();
 }

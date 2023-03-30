@@ -19,11 +19,11 @@ class Board {
         this.ctx.fillStyle = COLORS[value -1];
         this.ctx.fillRect(x, y, 1, 1);
         this.ctx.strokeRect(x, y, 1, 1);
-        this.ctx.fillStyle = 'white';
-        this.ctx.font = "0.5px Arial";
-        this.ctx.textAlign = "center";
-        this.ctx.textBaseline = "middle";
-        this.ctx.fillText(value, x + 0.5, y + 0.5);
+        // this.ctx.fillStyle = 'white';
+        // this.ctx.font = "0.5px Arial";
+        // this.ctx.textAlign = "center";
+        // this.ctx.textBaseline = "middle";
+        // this.ctx.fillText(1, x + 0.5, y + 0.5);
       }
      })
     })
@@ -57,6 +57,16 @@ class Board {
         this.piece.move(newPosition);
         stat.score += POINTS.HARD_DROP;
         newPosition = moveFn(this.piece);
+        document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+if(keyCode === KEYS.SPACE){
+  while(this.isValid(newPosition)){
+  this.piece.move(newPosition);
+  stat.score += POINTS.HARD_DROP;
+  newPosition = moveFn(this.piece);
+}
+       </code></pre>`;
+        Prism.highlightAll();
+      
       }
     }
 //soft drop
@@ -107,7 +117,7 @@ class Board {
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){
       lines++;      
-      row.fill(8);
+      //row.fill(1);
       setTimeout(() => { 
         this.grid.splice(y, 1);
         this.grid.unshift(Array(COLS).fill(0));

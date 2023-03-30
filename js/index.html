@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@200;300;400&family=Old+Standard+TT&family=Press+Start+2P&display=swap" rel="stylesheet"> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css"/>
   <title>Tetris Game</title>
 </head>
@@ -20,8 +21,7 @@
           <div class="next-move">
             <canvas id="next" class="next"></canvas>
           </div>
-          <button onClick="pause()" class="btn pause-button">Pause</button>
-          <button onClick="play()" class="btn reset-button">Reset</button>
+         
           <button onClick="playIntro()" class="btn sound-button"><img src="../assets/imgs/sound-btn.png"></button>
         </div>
         
@@ -31,20 +31,29 @@
         <div class="btns">
           <button onClick="play()" class="btn play-button">Start</button>
         </div>
+        <div class="hs">
+          <h4>HIGH SCORES:</h2>
+            <ol id="highScores"></ol>
+        </div>
+       <div class="game-over">
+        <p>GAME OVER</p>
+       </div>
       </div>
       
         
       </canvas>
       <div class="right-column">
-          
           <div class="scores">
-          <p>Score: <span id="score">0</span></p>
-          <p>Lines: <span id="lines">0</span></p>
-          <p>Level: <span id="level">0</span></p>
+            <p>Score: <span id="score">0</span></p>
+            <p>Lines: <span id="lines">0</span></p>
+            <p>Level: <span id="level">0</span></p>
           </div>
-   
-          <h4>HIGH SCORES:</h2>
-          <ol id="highScores"></ol>
+          <div class="code">
+          </div>
+          <div class="buttons">
+            <button onClick="pause()" class="btn pause-button">Pause</button>
+            <button onClick="play()" class="btn reset-button">Reset</button>
+          </div>
           
       </div>
        
@@ -55,5 +64,7 @@
   <script src="/js/board.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/piece.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>
