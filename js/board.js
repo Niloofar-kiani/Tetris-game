@@ -117,12 +117,25 @@ if(keyCode === KEYS.SPACE){
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){
       lines++;      
-      //row.fill(1);
+      let intervalId;
+      let currentValue = 1;
+      const fillRow = () => {
+        row.fill(currentValue);
+        currentValue = currentValue === 1 ? 4 : 1;
+        if (Date.now() - startTime > 1000) {
+          clearInterval(intervalId);
+          this.grid.splice(y, 1);
+          this.grid.unshift(Array(COLS).fill(0));
+          this.clear.play();
+        }
+      };
+      const startTime = Date.now();
+      intervalId = setInterval(fillRow, 200);
       setTimeout(() => { 
         this.grid.splice(y, 1);
         this.grid.unshift(Array(COLS).fill(0));
         this.clear.play();
-      }, 1500);
+      }, 1000);
     }
   });
   if(lines > 0) {

@@ -310,6 +310,7 @@ body .full .bg .main .right-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 333px;
 }
 body .full .bg .main .right-column .scores {
   height: var(--scores-height);
