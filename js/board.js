@@ -4,8 +4,8 @@ class Board {
     this.nextCtx = nextCtx;
 
     this.grid = this.getEmptyGrid();
-    this.setNextPiece();
-    this.setCurrentPiece();
+    this.setNextTetromino();
+    this.setCurrentTetromino();
   }
 
  getEmptyGrid() {
@@ -19,15 +19,10 @@ class Board {
         this.ctx.fillStyle = COLORS[value -1];
         this.ctx.fillRect(x, y, 1, 1);
         this.ctx.strokeRect(x, y, 1, 1);
-        // this.ctx.fillStyle = 'white';
-        // this.ctx.font = "0.5px Arial";
-        // this.ctx.textAlign = "center";
-        // this.ctx.textBaseline = "middle";
-        // this.ctx.fillText(1, x + 0.5, y + 0.5);
       }
      })
     })
-  this.piece.draw();
+  this.tetromino.draw();
  }
 
  isInsideWalls(x, y) {
@@ -47,22 +42,22 @@ class Board {
   })
  })
  }
- movePiece(keyCode) {
+ moveTetromino(keyCode) {
   const moveFn = MOVES[keyCode];
   if(moveFn){
-    let newPosition = moveFn(this.piece);
-//hard drop
+    let newPosition = moveFn(this.tetromino);
+    //hard drop
     if(keyCode === KEYS.SPACE){
       while(this.isValid(newPosition)){
-        this.piece.move(newPosition);
+        this.tetromino.move(newPosition);
         stat.score += POINTS.HARD_DROP;
-        newPosition = moveFn(this.piece);
+        newPosition = moveFn(this.tetromino);
         document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
 if(keyCode === KEYS.SPACE){
   while(this.isValid(newPosition)){
-  this.piece.move(newPosition);
+  this.tetromino.move(newPosition);
   stat.score += POINTS.HARD_DROP;
-  newPosition = moveFn(this.piece);
+  newPosition = moveFn(this.tetromino);
 }
        </code></pre>`;
         Prism.highlightAll();
@@ -71,7 +66,7 @@ if(keyCode === KEYS.SPACE){
     }
 //soft drop
     if(this.isValid(newPosition)){
-      this.piece.move(newPosition);
+      this.tetromino.move(newPosition);
       if(keyCode === KEYS.DOWN) {
         stat.score += POINTS.SOFT_DROP;
       }
@@ -82,12 +77,12 @@ if(keyCode === KEYS.SPACE){
   }
  }
 
- //freeze the piece in its final position
+ //freeze the tetromino in it's final position
  freeze(){
-   this.piece.shape.forEach((row, y) => {
+   this.tetromino.shape.forEach((row, y) => {
      row.forEach ((value, x) => {
      if(value > 0){
-      this.grid[y + this.piece.y][x + this.piece.x] = value;
+      this.grid[y + this.tetromino.y][x + this.tetromino.x] = value;
       
      }
      })
@@ -95,16 +90,16 @@ if(keyCode === KEYS.SPACE){
 
  }
  drop() {
-  let newPosition = MOVES[KEYS.DOWN](this.piece);
+  let newPosition = MOVES[KEYS.DOWN](this.tetromino);
   if(this.isValid(newPosition)){
-    this.piece.move(newPosition)
+    this.tetromino.move(newPosition)
   }else{
     this.freeze();
     this.clearLines();
-    if(this.piece.y === 0){
+    if(this.tetromino.y === 0){
       return false;
     }
-    this.setCurrentPiece();
+    this.setCurrentTetromino();
   }
   return true;
  }
@@ -137,18 +132,18 @@ if(keyCode === KEYS.SPACE){
   }
  }
 
-setNextPiece() {
+setNextTetromino() {
   const {width, height} = this.nextCtx.canvas;
-  this.nextPiece = new Piece(this.nextCtx);
+  this.nextTetromino = new Tetromino(this.nextCtx);
   this.nextCtx.clearRect(0, 0, width, height);
-  this.nextPiece.draw();
+  this.nextTetromino.draw();
 } 
 
-setCurrentPiece() {
-  this.piece = this.nextPiece;
-  this.piece.ctx = this.ctx;
-  this.piece.x = 3;
-  this.setNextPiece();
+setCurrentTetromino() {
+  this.tetromino = this.nextTetromino;
+  this.tetromino.ctx = this.ctx;
+  this.tetromino.x = 3;
+  this.setNextTetromino();
 }
 
 getLineClearPoints(lines) {

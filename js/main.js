@@ -54,7 +54,7 @@ function playIntro() {
 function handleKeyEvent(event) {
   //to prevent default browsers behavoiur
   event.preventDefault();
-  board.movePiece(event.keyCode);
+  board.moveTetromino(event.keyCode);
 
   //prevent event bubbling
   return false;

@@ -1,4 +1,4 @@
-class Piece{
+class Tetromino{
   constructor(ctx){
     this.ctx = ctx;
     const typeId = this.randomizeTetrominos(COLORS.length);
