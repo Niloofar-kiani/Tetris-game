@@ -9,8 +9,8 @@
   --rotate: 132deg;
   --margin-top-el:30px;
   --boxes-background:rgba(9, 0, 55, 0.85);
-  --display-monitor:url("../assets/imgs/monitor.png");
-  --display-bg: url("../assets/imgs/bg.gif");
+  --display-monitor:url("../../assets/imgs/monitor.png");
+  --display-bg: url("../../assets/imgs/bg.gif");
   --bg-margin-left: 111px;
   --bg-margin-top: 85px;
   --full-height:916px;
@@ -30,6 +30,12 @@
   --scores-height:144px;
   --scores-font-s:15px;
   --h4-margin-top:20px;
+  --btn-width:200px;
+  --btn-font-size: 16px;
+  --position-left: 40%;
+  --padding-main: 20px;
+  --position-left-btns: 0;
+  --font-size-header-wrap: 20px;
 }
 
 body {
@@ -40,7 +46,7 @@ body {
 }
 @media (max-width: 1190px) {
   body {
-    --display-monitor:url("../assets/imgs/bg.gif");
+    --display-monitor:url("../../assets/imgs/bg.gif");
     --display-bg: none;
     --bg-margin-left: auto;
     --full-height:-;
@@ -51,23 +57,36 @@ body {
 }
 @media (max-width: 900px) {
   body {
-    --bg-margin-top: 0;
+    --display-monitor:url("../../assets/imgs/bg.png");
+    --bg-margin-top:0;
+    --bg-margin:0 auto;
     --main-flex-dir:column;
     --pause-btn-pos:absolute;
     --pause-btn-top:580px;
     --pause-btn-z:99;
-    --next-right:29px;
+    --next-right:23px;
     --next-top:35px;
-    --next-height:114px;
-    --next-move-size:80px;
+    --next-height:84px;
+    --next-move-size:50px;
     --header-next-fd:row;
     --next-move-mt:0;
     --pause-btn-mt:33px;
     --header-next-w:400px;
-    --scores-width:325px;
+    --scores-width:190px;
     --scores-height:-;
     --scores-font-s:12px;
     --h4-margin-top:20px;
+    --card-height:500px;
+    --card-width:250px;
+    --display:none;
+    --btn-width:90px;
+    --btn-font-size: 10px;
+    --position-left-btns: 25%;
+    --padding-main: 0px;
+    --position-absolute: absolute;
+    --position-relative: relative;
+    --scores-width:160px;
+    --font-size-header-wrap: 10px;
   }
 }
 body .full {
@@ -95,7 +114,7 @@ body .full .bg {
   border-radius: 18px;
 }
 body .full .bg .main {
-  padding: 20px;
+  padding: var(--padding-main);
   display: flex;
   flex-direction: var(--main-flex-dir);
   justify-content: space-between;
@@ -117,7 +136,7 @@ body .full .bg .main .game-canvas .game-board {
 body .full .bg .main .game-canvas .btns {
   position: absolute;
   top: 25%;
-  left: 0;
+  left: var(--position-left-btns);
   right: 0;
   margin-left: auto;
   margin-right: auto;
@@ -209,6 +228,7 @@ body .full .bg .main .pause-button {
 body .full .bg .main .sound-button {
   width: 40px;
   padding: 5px;
+  position: var(--position-relative);
   border-radius: 50%;
   margin-top: 60px;
 }
@@ -249,9 +269,9 @@ body .full .bg .main .play-button {
   justify-content: center;
   background: #0d47a1;
   box-shadow: 1px 4px 1px 1px rgba(10, 49, 109, 0.85), 0px 6px 1px 2px rgba(10, 10, 10, 0.5);
-  font-size: 16px;
+  font-size: var(--btn-font-size);
   padding: 15px 15px;
-  width: 200px;
+  width: var(--btn-width);
   text-align: center;
   cursor: pointer;
   border: none;
@@ -293,7 +313,7 @@ body .full .bg .main .left-column .header-wrap {
   height: auto;
   padding: 0;
   text-align: center;
-  font-size: 20px;
+  font-size: var(--font-size-header-wrap);
   font-family: "Press Start 2P", cursive;
   transform: perspective(200px) rotateX(10deg);
   letter-spacing: 0.1em;
@@ -323,6 +343,9 @@ body .full .bg .main .right-column .scores {
   border: 3px rgba(255, 255, 255, 0.637) solid;
   margin-top: var(--margin-top-el);
   font-size: var(--scores-font-s);
+  position: var(--position-absolute);
+  left: var(--position-left);
+  top: 8%;
 }
 body .full .bg .main .right-column .code {
   border-radius: 8px;
@@ -334,10 +357,11 @@ body .full .bg .main .right-column .code {
   border: 3px rgba(255, 255, 255, 0.637) solid;
   margin-top: var(--margin-top-el);
   font-size: var(--scores-font-s);
-  padding: 5px;
+  padding: 0px;
   -moz-tab-size: 2;
     -o-tab-size: 2;
        tab-size: 2;
+  display: var(--display);
 }
 body .full .bg .main .right-column .code .language-javascript {
   font-size: 8px;
