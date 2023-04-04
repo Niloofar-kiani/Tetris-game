@@ -34,9 +34,9 @@ let stat = new Proxy(statValues, {
     return true;
   },
 });
-var intro = new Audio("../../assets/sounds/Tetris_start.mp3");
-var gameoverSound = new Audio("../../assets/sounds/gameover.wav");
-var clickSound = new Audio("../../assets/sounds/click.wav");
+var intro = new Audio("../js/assets/sounds/Tetris_start.mp3");
+var gameoverSound = new Audio("../js/assets/sounds/gameover.wav");
+var clickSound = new Audio("../js/assets/sounds/click.wav");
 intro.loop = true;
 
 function onTetrisLoad() {
@@ -56,6 +56,41 @@ function handleKeyEvent(event) {
   event.preventDefault();
   board.moveTetromino(event.keyCode);
 
+  //prevent event bubbling
+  return false;
+}
+
+function spaceKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(32);
+  //prevent event bubbling
+  return false;
+}
+
+function leftKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(37);
+  //prevent event bubbling
+  return false;
+}
+
+function upKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(38);
+  //prevent event bubbling
+  return false;
+}
+
+function rightKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(39);
+  //prevent event bubbling
+  return false;
+}
+
+function downKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(40);
   //prevent event bubbling
   return false;
 }

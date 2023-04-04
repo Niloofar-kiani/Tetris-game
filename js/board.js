@@ -16,7 +16,12 @@ class Board {
  this.grid.forEach((row, y) => {
     row.forEach ((value, x) => {
       if(value > 0){
-        this.ctx.fillStyle = COLORS[value -1];
+        if (window.innerWidth < 900) {
+          this.ctx.fillStyle = COLORSM[value -1];
+        }else{
+          this.ctx.fillStyle = COLORS[value -1];
+        }
+        //this.ctx.fillStyle = COLORS[value -1];
         this.ctx.fillRect(x, y, 1, 1);
         this.ctx.strokeRect(x, y, 1, 1);
       }
@@ -107,7 +112,7 @@ if(keyCode === KEYS.SPACE){
 
 
  clearLines() {
-  this.clear = new Audio('../../assets/sounds/clear.wav');
+  this.clear = new Audio('../js/assets/sounds/clear.wav');
   let lines = 0;
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){

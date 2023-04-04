@@ -3,6 +3,7 @@ const ROWS = 20;
 const BLOCK_SIZE = 30;
 
 const COLORS = ["#920c55", "#ee203f", "#32b72b", "#3822ab","#ffc90e", "#e94b87", "#fb6a40"]
+const COLORSM = ["#0f380f", "#0f380f", "#0f380f", "#0f380f","#0f380f", "#0f380f", "#0f380f"]
 const SHADES = ["rgba(10, 10, 10, 0.2)", "rgba(10, 10, 10, 0.2)", "rgba(10, 10, 10, 0.2)", "rgba(10, 10, 10, 0.2)","rgba(10, 10, 10, 0.2)", "rgba(10, 10, 10, 0.2)", "rgba(10, 10, 10, 0.2)"]
 const SHAPES = [
   [

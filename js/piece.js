@@ -2,7 +2,11 @@ class Tetromino{
   constructor(ctx){
     this.ctx = ctx;
     const typeId = this.randomizeTetrominos(COLORS.length);
-    this.color = COLORS[typeId];
+    if (window.innerWidth < 900) {
+      this.color = COLORSM[typeId];
+    }else{
+      this.color = COLORS[typeId];
+    }
     this.shape = SHAPES[typeId];
     this.shade = SHADES[typeId];
     this.x = 3;
