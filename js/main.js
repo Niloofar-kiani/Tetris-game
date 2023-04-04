@@ -60,6 +60,41 @@ function handleKeyEvent(event) {
   return false;
 }
 
+function spaceKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(32);
+  //prevent event bubbling
+  return false;
+}
+
+function leftKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(37);
+  //prevent event bubbling
+  return false;
+}
+
+function upKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(38);
+  //prevent event bubbling
+  return false;
+}
+
+function rightKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(39);
+  //prevent event bubbling
+  return false;
+}
+
+function downKeyEvent(event) {
+  event.preventDefault();
+  board.moveTetromino(40);
+  //prevent event bubbling
+  return false;
+}
+
 function addEventListener() {
   document.removeEventListener("keydown", handleKeyEvent);
   document.addEventListener("keydown", handleKeyEvent);

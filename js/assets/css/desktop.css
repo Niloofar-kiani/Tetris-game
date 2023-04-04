@@ -30,12 +30,6 @@
   --scores-height:144px;
   --scores-font-s:15px;
   --h4-margin-top:20px;
-  --btn-width:200px;
-  --btn-font-size: 16px;
-  --position-left: 40%;
-  --padding-main: 20px;
-  --position-left-btns: 0;
-  --font-size-header-wrap: 20px;
 }
 
 body {
@@ -57,36 +51,23 @@ body {
 }
 @media (max-width: 900px) {
   body {
-    --display-monitor:url("../../assets/imgs/bg.png");
-    --bg-margin-top:0;
-    --bg-margin:0 auto;
+    --bg-margin-top: 0;
     --main-flex-dir:column;
     --pause-btn-pos:absolute;
     --pause-btn-top:580px;
     --pause-btn-z:99;
-    --next-right:23px;
+    --next-right:29px;
     --next-top:35px;
-    --next-height:84px;
-    --next-move-size:50px;
+    --next-height:114px;
+    --next-move-size:80px;
     --header-next-fd:row;
     --next-move-mt:0;
     --pause-btn-mt:33px;
     --header-next-w:400px;
-    --scores-width:190px;
+    --scores-width:325px;
     --scores-height:-;
     --scores-font-s:12px;
     --h4-margin-top:20px;
-    --card-height:500px;
-    --card-width:250px;
-    --display:none;
-    --btn-width:90px;
-    --btn-font-size: 10px;
-    --position-left-btns: 25%;
-    --padding-main: 0px;
-    --position-absolute: absolute;
-    --position-relative: relative;
-    --scores-width:160px;
-    --font-size-header-wrap: 10px;
   }
 }
 body .full {
@@ -101,7 +82,7 @@ body .full {
   border-radius: var(--full-border-radius);
   margin-top: var(--full-margin-top);
 }
-body .full .bg {
+body .full .wrapper {
   background-image: var(--display-bg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -113,18 +94,24 @@ body .full .bg {
   margin-top: var(--bg-margin-top);
   border-radius: 18px;
 }
-body .full .bg .main {
-  padding: var(--padding-main);
+body .full .wrapper .gameboy {
+  padding: 10px;
   display: flex;
   flex-direction: var(--main-flex-dir);
   justify-content: space-between;
 }
-body .full .bg .main .game-canvas {
+body .full .wrapper .gameboy .top {
+  display: none;
+}
+body .full .wrapper .gameboy .screen {
   position: relative;
   display: flex;
   justify-content: center;
 }
-body .full .bg .main .game-canvas .game-board {
+body .full .wrapper .gameboy .screen .top {
+  display: none;
+}
+body .full .wrapper .gameboy .screen .game-board {
   width: var(--card-width);
   height: var(--card-height);
   margin-top: var(--margin-top-el);
@@ -133,23 +120,23 @@ body .full .bg .main .game-canvas .game-board {
   outline: 5px solid rgb(71, 142, 236);
   box-shadow: -15px 0 0 0 black, 15px 0 0 0 black, 0 -15px 0 0 black, 0 15px 0 0 black;
 }
-body .full .bg .main .game-canvas .btns {
+body .full .wrapper .gameboy .screen .btns {
   position: absolute;
   top: 25%;
-  left: var(--position-left-btns);
+  left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   width: 200px;
   z-index: 85;
 }
-body .full .bg .main .game-canvas .btns .hideBtn {
+body .full .wrapper .gameboy .screen .btns .hideBtn {
   display: none;
 }
-body .full .bg .main .game-canvas .hs-show {
+body .full .wrapper .gameboy .screen .hs-show {
   display: flex !important;
 }
-body .full .bg .main .game-canvas .hs {
+body .full .wrapper .gameboy .screen .hs {
   position: absolute;
   top: 48%;
   display: none;
@@ -162,10 +149,10 @@ body .full .bg .main .game-canvas .hs {
   padding: 10px;
   z-index: 81;
 }
-body .full .bg .main .game-canvas .hs h4 {
+body .full .wrapper .gameboy .screen .hs h4 {
   margin-top: var(--h4-margin-top);
 }
-body .full .bg .main .game-canvas .hs #highScores {
+body .full .wrapper .gameboy .screen .hs #highScores {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -174,10 +161,10 @@ body .full .bg .main .game-canvas .hs #highScores {
   font-size: 12px;
   margin-top: 0;
 }
-body .full .bg .main .game-canvas .hs #highScores li {
+body .full .wrapper .gameboy .screen .hs #highScores li {
   margin-bottom: 10px;
 }
-body .full .bg .main .game-canvas .game-over {
+body .full .wrapper .gameboy .screen .game-over {
   position: absolute;
   top: 35px;
   width: 300px;
@@ -187,12 +174,24 @@ body .full .bg .main .game-canvas .game-over {
   display: none;
   justify-content: center;
 }
-body .full .bg .main .game-canvas .game-over p {
+body .full .wrapper .gameboy .screen .game-over p {
   color: red;
   margin-top: 50px;
   font-size: 20px;
 }
-body .full .bg .main .btn {
+body .full .wrapper .gameboy .brand {
+  display: none;
+}
+body .full .wrapper .gameboy .controls {
+  display: none;
+}
+body .full .wrapper .gameboy .speaker {
+  display: none;
+}
+body .full .wrapper .gameboy .bottom {
+  display: none;
+}
+body .full .wrapper .gameboy .btn {
   margin: 8px;
   letter-spacing: 0.2rem;
   font-size: 1.2rem;
@@ -205,12 +204,12 @@ body .full .bg .main .btn {
   text-align: center;
   transition: box-shadow ease 0.1s;
 }
-body .full .bg .main .btn:active {
+body .full .wrapper .gameboy .btn:active {
   opacity: 0.8;
   transform: translateY(4px);
   box-shadow: 0px 0px 0px 0px rgba(10, 10, 10, 0.5);
 }
-body .full .bg .main .pause-button {
+body .full .wrapper .gameboy .pause-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,27 +224,26 @@ body .full .bg .main .pause-button {
   margin-bottom: 10px;
   visibility: hidden;
 }
-body .full .bg .main .sound-button {
+body .full .wrapper .gameboy .sound-button {
   width: 40px;
   padding: 5px;
-  position: var(--position-relative);
   border-radius: 50%;
   margin-top: 60px;
 }
-body .full .bg .main .sound-button img {
+body .full .wrapper .gameboy .sound-button img {
   width: 20px;
 }
-body .full .bg .main .resume-button {
+body .full .wrapper .gameboy .resume-button {
   background: #920c55;
   box-shadow: 1px 4px 1px 1px #530055, 0px 6px 1px 2px rgba(10, 10, 10, 0.5);
 }
-body .full .bg .main .pbtn-vis {
+body .full .wrapper .gameboy .pbtn-vis {
   visibility: visible;
 }
-body .full .bg .main .pbtn-hidden {
+body .full .wrapper .gameboy .pbtn-hidden {
   visibility: hidden !important;
 }
-body .full .bg .main .reset-button {
+body .full .wrapper .gameboy .reset-button {
   text-align: center;
   cursor: pointer;
   border: none;
@@ -257,39 +255,39 @@ body .full .bg .main .reset-button {
   background: #e6083c;
   box-shadow: 1px 4px 1px 1px #b80630, 0px 6px 1px 2px rgba(10, 10, 10, 0.5);
 }
-body .full .bg .main .rbtn-vis {
+body .full .wrapper .gameboy .rbtn-vis {
   visibility: visible;
 }
-body .full .bg .main .rbtn-hidden {
+body .full .wrapper .gameboy .rbtn-hidden {
   visibility: hidden !important;
 }
-body .full .bg .main .play-button {
+body .full .wrapper .gameboy .play-button {
   display: flex;
   align-items: center;
   justify-content: center;
   background: #0d47a1;
   box-shadow: 1px 4px 1px 1px rgba(10, 49, 109, 0.85), 0px 6px 1px 2px rgba(10, 10, 10, 0.5);
-  font-size: var(--btn-font-size);
+  font-size: 16px;
   padding: 15px 15px;
-  width: var(--btn-width);
+  width: 200px;
   text-align: center;
   cursor: pointer;
   border: none;
   margin-bottom: 10px;
 }
-body .full .bg .main .left-column {
+body .full .wrapper .gameboy .left-column {
   display: flex;
   flex-direction: var(--lc-flex-dir);
   align-items: center;
 }
-body .full .bg .main .left-column .header-next {
+body .full .wrapper .gameboy .left-column .header-next {
   display: flex;
   flex-direction: var(--header-next-fd);
   justify-content: space-around;
   align-items: center;
   width: var(--header-next-w);
 }
-body .full .bg .main .left-column .header-next .next-move {
+body .full .wrapper .gameboy .left-column .header-next .next-move {
   height: var(--next-move-size);
   width: var(--next-move-size);
   border-radius: 8px;
@@ -301,19 +299,19 @@ body .full .bg .main .left-column .header-next .next-move {
   border: 3px rgba(255, 255, 255, 0.637) solid;
   margin-top: var(--next-move-mt);
 }
-body .full .bg .main .left-column .header-next .next-move .next {
+body .full .wrapper .gameboy .left-column .header-next .next-move .next {
   position: relative;
   right: var(--next-right);
   top: var(--next-top);
   height: var(--next-height);
 }
-body .full .bg .main .left-column .header-wrap {
+body .full .wrapper .gameboy .left-column .header-wrap {
   display: block;
   width: auto;
   height: auto;
   padding: 0;
   text-align: center;
-  font-size: var(--font-size-header-wrap);
+  font-size: 20px;
   font-family: "Press Start 2P", cursive;
   transform: perspective(200px) rotateX(10deg);
   letter-spacing: 0.1em;
@@ -323,15 +321,15 @@ body .full .bg .main .left-column .header-wrap {
   text-shadow: 0 -1px 0 #fff, 0 1px 0 #a980aa, 0 2px 0 #986699, 0 3px 0 #874d88, 0 4px 0 #753377, 0 5px 0 #641a66, 0 6px 0 #530055, 0 7px 0 #4b004d, 0 8px 0 #420044, 0 9px 0 #3a003b, 0 10px 0 #320033, 0 11px 0 #2a002b, 0 12px 0 #210022, 0 13px 0 #190019, 0 14px 0 #110011, 0 15px 0 #080008, 0 22px 30px rgba(0, 0, 0, 0.9), 0 22px 30px rgba(0, 0, 0, 0.9), 0 22px 15px rgba(0, 0, 0, 0.9), 0 11px 15px rgba(0, 0, 0, 0.9), 0 15px 20px rgba(0, 0, 0, 0.9), 0 15px 11px rgba(0, 0, 0, 0.9), 0 16px 11px rgba(0, 0, 0, 0.9);
   transition: text-shadow 0.3s ease 0.3s, transform 0.3s ease 0.3s, letter-spacing 0.3s ease 0.3s;
 }
-body .full .bg .main .left-column .header-wrap h1 {
+body .full .wrapper .gameboy .left-column .header-wrap h1 {
   margin-top: var(--margin-top-el);
 }
-body .full .bg .main .right-column {
+body .full .wrapper .gameboy .right-column {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body .full .bg .main .right-column .scores {
+body .full .wrapper .gameboy .right-column .scores {
   height: var(--scores-height);
   width: var(--scores-width);
   border-radius: 8px;
@@ -343,11 +341,8 @@ body .full .bg .main .right-column .scores {
   border: 3px rgba(255, 255, 255, 0.637) solid;
   margin-top: var(--margin-top-el);
   font-size: var(--scores-font-s);
-  position: var(--position-absolute);
-  left: var(--position-left);
-  top: 8%;
 }
-body .full .bg .main .right-column .code {
+body .full .wrapper .gameboy .right-column .code {
   border-radius: 8px;
   background-color: var(--boxes-background);
   display: flex;
@@ -357,18 +352,17 @@ body .full .bg .main .right-column .code {
   border: 3px rgba(255, 255, 255, 0.637) solid;
   margin-top: var(--margin-top-el);
   font-size: var(--scores-font-s);
-  padding: 0px;
+  padding: 5px;
   -moz-tab-size: 2;
     -o-tab-size: 2;
        tab-size: 2;
-  display: var(--display);
 }
-body .full .bg .main .right-column .code .language-javascript {
+body .full .wrapper .gameboy .right-column .code .language-javascript {
   font-size: 8px;
   border-radius: 8px;
   margin: 0;
 }
-body .full .bg .main .right-column .buttons {
+body .full .wrapper .gameboy .right-column .buttons {
   margin-top: var(--pause-btn-mt);
   display: flex;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=desktop.css.map */
