@@ -112,7 +112,7 @@ if(keyCode === KEYS.SPACE){
 
 
  clearLines() {
-  this.clear = new Audio('../../assets/sounds/clear.wav');
+  this.clear = new Audio('../js/assets/sounds/clear.wav');
   let lines = 0;
   this.grid.forEach((row, y) =>{
     if(row.every((value)=> value > 0)){

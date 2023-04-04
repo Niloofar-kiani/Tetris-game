@@ -34,9 +34,9 @@ let stat = new Proxy(statValues, {
     return true;
   },
 });
-var intro = new Audio("./assets/sounds/Tetris_start.mp3");
-var gameoverSound = new Audio("./assets/sounds/gameover.wav");
-var clickSound = new Audio("./assets/sounds/click.wav");
+var intro = new Audio("../js/assets/sounds/Tetris_start.mp3");
+var gameoverSound = new Audio("../js/assets/sounds/gameover.wav");
+var clickSound = new Audio("../js/assets/sounds/click.wav");
 intro.loop = true;
 
 function onTetrisLoad() {
