@@ -122,7 +122,7 @@ if(keyCode === KEYS.SPACE){
         this.grid.splice(y, 1);
         this.grid.unshift(Array(COLS).fill(0));
         this.clear.play();
-      }, 1500);
+      }, 300);
     }
   });
   if(lines > 0) {
@@ -133,7 +133,26 @@ if(keyCode === KEYS.SPACE){
       stat.level++;
       stat.lines -= LINES_PER_LEVEL;
       time.level = LEVEL[stat.level];
+    } if (stat.level >= 7) {
+      time.level = 180; // change to the desired duration in milliseconds
+    } else if (stat.level > 12) {
+      time.level = 150; // change to the desired duration in milliseconds
+    }else if (stat.level > 14) {
+      time.level = 130; // change to the desired duration in milliseconds
+    }else if (stat.level > 16) {
+      time.level = 100; // change to the desired duration in milliseconds
+    }else if (stat.level > 18) {
+      time.level = 80; // change to the desired duration in milliseconds
+    }else if (stat.level > 20) {
+      time.level = 50; // change to the desired duration in milliseconds
+    }else if (stat.level > 22) {
+      time.level = 30; // change to the desired duration in milliseconds
+    }else if (stat.level > 24) {
+      time.level = 10; // change to the desired duration in milliseconds
+    }else if (stat.level > 27) {
+      time.level = 0; // change to the desired duration in milliseconds
     }
+
   }
  }
 
