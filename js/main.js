@@ -112,9 +112,12 @@ function play() {
   hidePlay();
   showBtn();
   resetGame();
+  intro.play();
   addEventListener();
   clickSound.play();
-  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+  document.querySelector(
+    ".code",
+  ).innerHTML = `<pre><code class="language-javascript">
 function play() {
   hidePlay();
   showBtn();
@@ -135,6 +138,44 @@ function play() {
   time.start = performance.now();
   animate();
 }
+const postUserName = async (user) => {
+  const res = await fetch("http://127.0.0.1:3008/tetris/username", {
+    method: "POST",
+    body: JSON.stringify({username: user}),
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.json();
+};
+
+const postUserScore = async (user, score) => {
+  const res = await fetch("http://127.0.0.1:3008/tetris/score", {
+    method: "POST",
+    body: JSON.stringify({username: user, score: score}),
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.json();
+};
+
+// const getUsers = async (user, score) => {
+//   const res = await fetch(`http://127.0.0.1:3008/tetris/users?username=${user}&score=${score}`, {
+//     method: "GET",
+//     body: JSON.stringify({username: user, score: score}),
+//     mode: "cors",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   return res.json();
+// };
+
+
+
 
 function draw() {
   const {width, height} = canvas;
@@ -190,7 +231,9 @@ function gameOver() {
   showPlay();
   hideBtn();
   gameoverSound.play();
-  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+  document.querySelector(
+    ".code",
+  ).innerHTML = `<pre><code class="language-javascript">
 function gameOver() {
   cancelAnimationFrame(requestId);
   checkHighScore(stat.score);
@@ -214,8 +257,11 @@ function checkHighScore(score) {
 
 function saveHighScore(score, highScores) {
   const maxLength = 10;
-  const name = prompt("You get a high score! Please Enter Your Name: ");
-  const newScore = {score, name};
+  const username = prompt("You get a high score! Please Enter Your Name: ");
+  const newScore = {score, username};
+  //postUserName(username);
+  //debugger;
+  postUserScore(username, score);
 
   highScores.push(newScore);
   highScores.sort((a, b) => b.score - a.score);
@@ -231,6 +277,7 @@ function showHighScores() {
   highScoresList.innerHTML = highScores
     .map((score) => `<li>${score.score} - ${score.name}</li>`)
     .join("");
+  //getUsers().then((res) => console.log(res));
 }
 
 function pause() {
@@ -247,7 +294,9 @@ function pause() {
     el.classList.remove("resume-button");
     animate();
   }
-  document.querySelector(".code").innerHTML = `<pre><code class="language-javascript">
+  document.querySelector(
+    ".code",
+  ).innerHTML = `<pre><code class="language-javascript">
 function pause() {
 clickSound.play();
 if(el.textContent === "Pause") {
